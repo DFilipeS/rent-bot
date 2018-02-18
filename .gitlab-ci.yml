@@ -1,0 +1,31 @@
+image: elixir:1.5
+
+# Pick zero or more services to be used on all builds.
+# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-service
+services:
+  - postgres:latest
+
+stages:
+  # - test
+  - build
+
+# test:
+#   stage: test
+#   variables:
+#     DATABASE_URL: "ecto://postgres:postgres@postgres/rentbot_test"
+#   before_script:
+#   - mix local.rebar --force
+#   - mix local.hex --force
+#   - mix deps.get
+#   script:
+#   - mix test
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker build -t registry.gitlab.com/dfilipes/rent-bot:$CI_COMMIT_SHA -t registry.gitlab.com/dfilipes/rent-bot:latest -f docker/prod/Dockerfile .
+    - docker push registry.gitlab.com/dfilipes/rent-bot

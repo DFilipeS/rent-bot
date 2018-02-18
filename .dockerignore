@@ -1,0 +1,6 @@
+/_build
+/db
+/deps
+/*.ez
+/priv/static
+/.elixir_ls
