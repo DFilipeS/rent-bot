@@ -34,8 +34,8 @@ config :rent_bot_web, RentBotWeb.Scheduler,
   ]
 
 config :rent_bot_web, RentBotWeb.BotController,
-  facebook_messenger_verify_token: "YOUR_TOKEN_HERE",
-  facebook_messenger_access_token: "YOUR_TOKEN_HERE"
+  facebook_messenger_verify_token: "${VERIFY_TOKEN}",
+  facebook_messenger_access_token: "${ACCESS_TOKEN}"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
