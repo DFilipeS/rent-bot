@@ -15,4 +15,6 @@ To get a customized query, first go to each website and make your search. Search
 * `apps/crawler/lib/idealista.ex` - URL at top of the file
 * `apps/crawler/lib/imovirtual.ex` - URL at top of the file
 
-Daniel Silva - 2018
+## License
+
+[MIT](https://github.com/DFilipeS/rent-bot/blob/master/LICENSE)
